@@ -1,22 +1,6 @@
 '''
 This python program solves the Lotka-Volterra coupled population dynamics equation:
-theta''(t) = (-1/Q)theta'(t) + sin(theta(t)) + d cos(Omega t)
-Where   theta(t)        : angular position as a fn of time
-        Q               : damping factor
-        sin(theta(t))   : nonlinear term in Simple Harmonic motion equation
-        d               : Driving force amplitude
-        Omega           : Driving force frequency
-This second order nonlinear differential equation is first transformed to a system of
-2 first order diffeqs and then solved using scipy.odeint(...)
-The first order diff eqs are:
-theta'(t) = omega
-omega'(t) = (-1/Q)omega + sin(theta(t)) + d cos(Omega t)
-Where   omega = theta'(t) for convenience.
-The new initial conditions are given by theta0 and omega0.  These are fed to the y0
-argument in odeint as seen below.
-For greater detail, please visit
-http://www.physics.nyu.edu/pine/pymanual/html/chap9/chap9_scipy.html#solving-odes
-__author__ : folks at physics.nyu.edu
+__Author__: Aneet Narendranath, PhD
 '''
 import numpy as np
 import matplotlib.pyplot as plt
