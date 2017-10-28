@@ -1,0 +1,1707 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     75820,       1698]
+NotebookOptionsPosition[     71539,       1566]
+NotebookOutlinePosition[     73142,       1616]
+CellTagsIndexPosition[     72814,       1604]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["The Fermi-Pasta-Ulam Experiment", "DemoTitle",
+ CellChangeTimes->{
+  3.554589866708229*^9, {3.5547377413044987`*^9, 3.554737742604725*^9}}],
+
+Cell["", "InitializationSection"],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"SeedRandom", "[", "seed", "]"}], ";", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"nsol", "=", 
+        RowBox[{"NDSolve", "[", 
+         RowBox[{
+          RowBox[{"Evaluate", "@", 
+           RowBox[{"Flatten", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Table", "[", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"m", " ", 
+                   RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"x", "[", "i", "]"}], "\[Prime]\[Prime]",
+                    MultilineFunction->None], "[", "t", "]"}]}], "\[Equal]", 
+                  RowBox[{
+                   RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"x", "[", 
+                    RowBox[{"i", " ", "+", " ", "1"}], "]"}], "[", "t", "]"}],
+                     " ", "-", " ", 
+                    RowBox[{"2", "*", 
+                    RowBox[{
+                    RowBox[{"x", "[", "i", "]"}], "[", "t", "]"}]}], " ", "+",
+                     " ", 
+                    RowBox[{
+                    RowBox[{"x", "[", 
+                    RowBox[{"i", " ", "-", " ", "1"}], "]"}], "[", "t", 
+                    "]"}]}], ")"}], " ", "+", " ", 
+                   RowBox[{"\[Alpha]", "*", 
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"x", "[", 
+                    RowBox[{"i", " ", "+", " ", "1"}], "]"}], "[", "t", "]"}],
+                     " ", "-", " ", 
+                    RowBox[{
+                    RowBox[{"x", "[", "i", "]"}], "[", "t", "]"}]}], ")"}], 
+                    "^", "2"}], " ", "-", " ", "\n", "                ", 
+                    RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"x", "[", "i", "]"}], "[", "t", "]"}], " ", "-", 
+                    " ", 
+                    RowBox[{
+                    RowBox[{"x", "[", 
+                    RowBox[{"i", " ", "-", " ", "1"}], "]"}], "[", "t", 
+                    "]"}]}], ")"}], "^", "2"}]}], ")"}]}]}]}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"i", ",", "n"}], "}"}]}], "]"}], "/.", 
+               "\[VeryThinSpace]", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"x", "[", "0", "]"}], "[", "t", "]"}], 
+                  "\[RuleDelayed]", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"x", "[", "1", "]"}], "[", "t", "]"}], "-", 
+                   "1"}]}], ",", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"x", "[", 
+                    RowBox[{"n", "+", "1"}], "]"}], "[", "t", "]"}], 
+                  "\[RuleDelayed]", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"x", "[", "n", "]"}], "[", "t", "]"}], "+", 
+                   "1"}]}]}], "}"}]}], ",", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{"x", "[", "i", "]"}], "[", "0", "]"}], "\[Equal]", 
+                   RowBox[{"i", "+", 
+                    RowBox[{
+                    RowBox[{"RandomReal", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", ".1"}], ",", ".1"}], "}"}], "]"}], "/", 
+                    "2"}]}]}], ",", 
+                  RowBox[{
+                   RowBox[{
+                    SuperscriptBox[
+                    RowBox[{"x", "[", "i", "]"}], "\[Prime]",
+                    MultilineFunction->None], "[", "0", "]"}], "\[Equal]", 
+                   RowBox[{"RandomReal", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"-", "1"}], ",", "1"}], "}"}], "]"}]}]}], "}"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", "n"}], "}"}]}], "]"}]}], "}"}], "]"}]}], 
+          ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"x", "[", "i", "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "n"}], "}"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"t", ",", "0", ",", "tf"}], "}"}], ",", 
+          RowBox[{"MaxSteps", "\[Rule]", "100000"}]}], "]"}]}], "}"}], ",", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"Pane", "[", 
+       RowBox[{
+        RowBox[{"Which", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"view", " ", "==", " ", "\"\<plot\>\""}], ",", " ", 
+          RowBox[{"Plot", "[", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"x", "[", "i", "]"}], "[", "t", "]"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}], " ", "/.", " ",
+               "nsol"}], "]"}], ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"t", ",", " ", "0", ",", " ", "tf"}], "}"}], ",", " ", 
+            "\n", "       ", 
+            RowBox[{"PlotRange", " ", "->", " ", "All"}], ",", "  ", 
+            RowBox[{"Frame", " ", "->", " ", "True"}], ",", " ", 
+            RowBox[{"Axes", " ", "->", " ", "False"}], ",", " ", "\n", 
+            "       ", 
+            RowBox[{"ImageSize", " ", "->", " ", "450"}], ",", " ", 
+            RowBox[{"AspectRatio", " ", "->", " ", "1"}]}], "]"}], ",", " ", 
+          "\[IndentingNewLine]", 
+          RowBox[{"view", " ", "==", " ", "\"\<density plot\>\""}], ",", " ", 
+          "\n", "      ", 
+          RowBox[{"ListDensityPlot", "[", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"x", "[", "i", "]"}], "[", "t", "]"}], " ", "-", 
+                 " ", "i"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", " ", "n"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "t", ",", " ", "0", ",", " ", "tf", ",", " ", "0.1"}], 
+                 "}"}]}], "]"}], " ", "/.", " ", 
+              RowBox[{"nsol", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", " ", "\n", 
+            "       ", 
+            RowBox[{"PlotRange", " ", "->", " ", "All"}], ",", " ", 
+            RowBox[{"Mesh", " ", "->", " ", "False"}], ",", " ", 
+            RowBox[{"Axes", " ", "->", " ", "False"}], ",", " ", 
+            RowBox[{"ImageSize", " ", "->", " ", "450"}], ",", " ", "\n", 
+            "       ", 
+            RowBox[{"ColorFunction", " ", "->", " ", "\"\<SunsetColors\>\""}],
+             ",", 
+            RowBox[{"DataRange", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "n"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "tf"}], "}"}]}], "}"}]}]}], "]"}], ",", " ",
+           "\[IndentingNewLine]", 
+          RowBox[{"view", " ", "==", " ", "\"\<contour plot\>\""}], ",", " ", 
+          "\n", "      ", 
+          RowBox[{"ListContourPlot", "[", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"x", "[", "i", "]"}], "[", "t", "]"}], " ", "-", 
+                 " ", "i"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", " ", "n"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "t", ",", " ", "0", ",", " ", "tf", ",", " ", "0.1"}], 
+                 "}"}]}], "]"}], " ", "/.", " ", 
+              RowBox[{"nsol", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", " ", "\n", 
+            "       ", 
+            RowBox[{"PlotRange", " ", "->", " ", "All"}], ",", " ", 
+            RowBox[{"Mesh", " ", "->", " ", "False"}], ",", " ", 
+            RowBox[{"Axes", " ", "->", " ", "False"}], ",", " ", 
+            RowBox[{"Contours", " ", "->", " ", "8"}], ",", " ", 
+            RowBox[{"ImageSize", " ", "->", " ", "450"}], ",", " ", "\n", 
+            "       ", 
+            RowBox[{"ColorFunction", " ", "->", " ", "\"\<SunsetColors\>\""}],
+             ",", 
+            RowBox[{"DataRange", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "n"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "tf"}], "}"}]}], "}"}]}]}], "]"}], ",", " ",
+           "\[IndentingNewLine]", 
+          RowBox[{"view", " ", "==", " ", "\"\<3D plot\>\""}], ",", " ", "\n",
+           "      ", 
+          RowBox[{"ListPlot3D", "[", 
+           RowBox[{
+            RowBox[{"Evaluate", "[", 
+             RowBox[{
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"x", "[", "i", "]"}], "[", "t", "]"}], " ", "-", 
+                 " ", "i"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{"i", ",", " ", "n"}], "}"}], ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                 "t", ",", " ", "0", ",", " ", "tf", ",", " ", "0.1"}], 
+                 "}"}]}], "]"}], " ", "/.", " ", 
+              RowBox[{"nsol", "[", 
+               RowBox[{"[", "1", "]"}], "]"}]}], "]"}], ",", " ", "\n", 
+            "       ", 
+            RowBox[{"PlotRange", " ", "->", " ", "All"}], ",", " ", 
+            RowBox[{"Mesh", " ", "->", " ", "False"}], ",", " ", 
+            RowBox[{"Axes", " ", "->", " ", "True"}], ",", " ", 
+            RowBox[{"ImageSize", " ", "->", " ", "450"}], ",", " ", "\n", 
+            "       ", 
+            RowBox[{"ColorFunction", " ", "->", " ", "\"\<SunsetColors\>\""}],
+             ",", " ", 
+            RowBox[{"SphericalRegion", " ", "->", " ", "True"}], ",", 
+            RowBox[{"DataRange", "\[Rule]", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"0", ",", "n"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"0", ",", "tf"}], "}"}]}], "}"}]}]}], "]"}]}], "]"}], 
+        ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"450", ",", " ", "450"}], "}"}]}], "]"}]}], "]"}]}], ",", 
+   "\[IndentingNewLine]", "  ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"view", ",", " ", "\"\<plot\>\""}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<plot\>\"", ",", " ", "\"\<density plot\>\"", ",", " ", 
+       "\"\<contour plot\>\"", ",", " ", "\"\<3D plot\>\""}], "}"}], ",", " ",
+      "\n", "   ", 
+     RowBox[{"ControlPlacement", " ", "->", " ", "Top"}]}], "}"}], ",", " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n", ",", " ", "20", ",", " ", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<n\>\"", ",", " ", "Italic"}], "]"}]}], "}"}], ",", " ", 
+     "2", ",", " ", "64", ",", " ", "1", ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "Tiny"}], ",", " ", "\n", "   ", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   " ", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"tf", ",", " ", "39.", ",", " ", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<t\>\"", ",", " ", "Italic"}], "]"}]}], "}"}], ",", " ", 
+     "0.1", ",", " ", "150", ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "Tiny"}], ",", " ", "\n", "   ", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   " ", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"m", ",", " ", "1.", ",", " ", 
+       RowBox[{"Style", "[", 
+        RowBox[{"\"\<m\>\"", ",", " ", "Italic"}], "]"}]}], "}"}], ",", " ", 
+     "0.1", ",", " ", "5", ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "Tiny"}], ",", " ", "\n", "   ", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   " ", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[Alpha]", ",", " ", "1"}], "}"}], ",", " ", "0.1", ",", " ", 
+     "15", ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "Tiny"}], ",", " ", 
+     RowBox[{"Appearance", " ", "->", " ", "\"\<Labeled\>\""}]}], "}"}], ",", 
+   " ", "\n", "  ", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"seed", ",", "6210526"}], "}"}], ",", " ", "1000000", ",", " ", 
+     "10000000", ",", " ", "1", ",", " ", 
+     RowBox[{"ImageSize", " ", "->", " ", "Tiny"}]}], "}"}], ",", 
+   "\[IndentingNewLine]", " ", 
+   RowBox[{"ControlPlacement", " ", "->", " ", "Left"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"SynchronousUpdating", "\[Rule]", " ", "False"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"AutorunSequencing", "\[Rule]", " ", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "3"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.5515563204942827`*^9, 3.551556354581078*^9}, {
+   3.551556575366024*^9, 3.55155658669318*^9}, {3.5515566852225943`*^9, 
+   3.55155675264224*^9}, {3.5515567909590178`*^9, 3.551556896025807*^9}, {
+   3.5515569279189262`*^9, 3.5515569365917892`*^9}, 3.5515570281671677`*^9, {
+   3.551557238297947*^9, 3.5515572453520317`*^9}, {3.551557287149848*^9, 
+   3.551557318845003*^9}, {3.551558385613093*^9, 3.551558385903623*^9}, 
+   3.551558416978606*^9, {3.5515584470045023`*^9, 3.551558572928708*^9}, {
+   3.551558662801668*^9, 3.551558693158925*^9}, {3.551559130534091*^9, 
+   3.551559189148188*^9}, {3.551559397263014*^9, 3.5515594289557056`*^9}, {
+   3.5515594613098593`*^9, 3.5515594639121943`*^9}, {3.55155950367572*^9, 
+   3.55155952932443*^9}, {3.551559581201262*^9, 3.5515595933822737`*^9}, {
+   3.551559787338771*^9, 3.551559812063651*^9}, {3.551559872153262*^9, 
+   3.5515598929417953`*^9}, {3.55155996338806*^9, 3.551559975614409*^9}, {
+   3.551561069127172*^9, 3.551561126606203*^9}, {3.551561466821047*^9, 
+   3.551561527258812*^9}, {3.551561709680991*^9, 3.551561712986249*^9}, {
+   3.551561955764475*^9, 3.551561955896859*^9}, {3.551563409015586*^9, 
+   3.5515634336503983`*^9}, {3.551563481790442*^9, 3.5515635076425*^9}, 
+   3.551563666207649*^9, {3.551563709375382*^9, 3.551563768709893*^9}, {
+   3.551563827914569*^9, 3.551563886154858*^9}, {3.551563945110098*^9, 
+   3.5515639452858543`*^9}, 3.551564034603093*^9, 3.551564487214686*^9, {
+   3.551565153056484*^9, 3.551565170925293*^9}, {3.55156544391642*^9, 
+   3.55156549916465*^9}, {3.551566241916872*^9, 3.551566242820958*^9}, {
+   3.551566304676931*^9, 3.551566316029305*^9}, {3.551566358596178*^9, 
+   3.5515663898879023`*^9}, {3.5515665439768343`*^9, 3.551566544402405*^9}, {
+   3.551566599515408*^9, 3.551566599872466*^9}, {3.551566666722973*^9, 
+   3.551566751526915*^9}, {3.551567545364111*^9, 3.551567565897456*^9}, {
+   3.551567803712973*^9, 3.551567906380436*^9}, {3.5515679504662857`*^9, 
+   3.551567955338191*^9}, 3.5515679880704613`*^9, {3.551568024522233*^9, 
+   3.551568037500567*^9}, {3.551568087022952*^9, 3.551568126079095*^9}, 
+   3.551568264474197*^9, {3.551568296130477*^9, 3.551568317606798*^9}, {
+   3.551568350063991*^9, 3.551568408220118*^9}, {3.551568522424573*^9, 
+   3.5515685249543962`*^9}, {3.551568645961279*^9, 3.5515686585498323`*^9}, {
+   3.551568739089151*^9, 3.55156882577985*^9}, {3.551568926413067*^9, 
+   3.551568941702551*^9}, {3.551568984666616*^9, 3.551569031436165*^9}, {
+   3.551569144990575*^9, 3.5515691498076363`*^9}, {3.55156919596691*^9, 
+   3.5515692069362917`*^9}, {3.5515700356802797`*^9, 3.551570036199808*^9}, {
+   3.5515700906125937`*^9, 3.5515700945261917`*^9}, {3.551570142413066*^9, 
+   3.551570165797607*^9}, {3.55157023095896*^9, 3.551570231607018*^9}, {
+   3.55157305222754*^9, 3.55157305731043*^9}, {3.551573156268818*^9, 
+   3.5515731741446657`*^9}, 3.551573632566353*^9, 3.55157374352216*^9, 
+   3.5515738665448627`*^9, {3.551573911517828*^9, 3.551573959307232*^9}, {
+   3.5526533887232847`*^9, 3.552653397834353*^9}, {3.5526540162488422`*^9, 
+   3.55265401748361*^9}, {3.552654175728303*^9, 3.552654201831979*^9}, {
+   3.552654299627617*^9, 3.5526543925201063`*^9}, 3.5526602028878403`*^9, 
+   3.552660719649461*^9, {3.552660968838356*^9, 3.5526609778901663`*^9}, 
+   3.5526610993925953`*^9, {3.5526623956997213`*^9, 3.552662396103901*^9}, {
+   3.55266258547884*^9, 3.552662611934783*^9}, {3.552662696718183*^9, 
+   3.552662702121841*^9}, 3.552662732645084*^9, {3.552665363444893*^9, 
+   3.5526654950080223`*^9}, 3.552665971876616*^9, {3.5526672076104813`*^9, 
+   3.552667230319008*^9}, {3.552667316887685*^9, 3.5526673851956778`*^9}, 
+   3.552667612267888*^9, 3.5526676486358433`*^9, 3.5526677821095133`*^9, {
+   3.552667828661392*^9, 3.55266782879457*^9}, 3.552670209098466*^9, 
+   3.552670278724476*^9, 3.552670421959024*^9, {3.5526705942530622`*^9, 
+   3.552670598412834*^9}, 3.552670634255581*^9, {3.552670821274148*^9, 
+   3.552670824165338*^9}, {3.552671613090366*^9, 3.552671629468363*^9}, {
+   3.552672993626418*^9, 3.5526730227805443`*^9}, 3.5526732580293617`*^9, {
+   3.552680230459764*^9, 3.552680233935223*^9}, {3.552680374226296*^9, 
+   3.552680387934618*^9}, {3.5526808373396053`*^9, 3.552680849186054*^9}, {
+   3.552681489497583*^9, 3.55268149168839*^9}, {3.552681907030903*^9, 
+   3.552681908673471*^9}, {3.5526824891849747`*^9, 3.5526825078553333`*^9}, {
+   3.552683580192792*^9, 3.552683585991564*^9}, {3.552684524002166*^9, 
+   3.552684578449664*^9}, {3.552685784972102*^9, 3.552685841913618*^9}, 
+   3.552686124795661*^9, {3.552686191176406*^9, 3.552686205356183*^9}, {
+   3.552686332168249*^9, 3.552686332594136*^9}, {3.552686645573366*^9, 
+   3.552686663709569*^9}, {3.552686802524084*^9, 3.552686833029035*^9}, {
+   3.552686897405623*^9, 3.552686924517476*^9}, {3.5526870356487217`*^9, 
+   3.552687038607041*^9}, {3.552689926598721*^9, 3.552689927063196*^9}, {
+   3.5526908456716757`*^9, 3.552690846053746*^9}, 3.5526910065344877`*^9, {
+   3.552691148744999*^9, 3.5526911575707693`*^9}, {3.552691294525008*^9, 
+   3.552691339134964*^9}, {3.552692128010627*^9, 3.5526921858894453`*^9}, {
+   3.552692274016363*^9, 3.5526922995294323`*^9}, 3.5526924291121063`*^9, {
+   3.5526927369539633`*^9, 3.552692739017074*^9}, 3.552693280224757*^9, {
+   3.552694057782757*^9, 3.552694062122284*^9}, {3.552696094469256*^9, 
+   3.552696113568809*^9}, {3.5526963086217012`*^9, 3.552696317910013*^9}, {
+   3.5526966292263803`*^9, 3.552696630305159*^9}, {3.552745211081388*^9, 
+   3.5527452231697187`*^9}, {3.554589890812007*^9, 3.554589990644837*^9}, {
+   3.554590052722825*^9, 3.554590053229048*^9}, {3.554590146968966*^9, 
+   3.5545901945695457`*^9}, {3.554590243263582*^9, 3.554590250420169*^9}, {
+   3.5545904433696623`*^9, 3.554590532096901*^9}, {3.554590612827258*^9, 
+   3.554590626415621*^9}, {3.554590671078311*^9, 3.55459070433854*^9}, {
+   3.554590961445044*^9, 3.554590976797204*^9}, {3.554591013676038*^9, 
+   3.554591017770021*^9}, {3.554591055358695*^9, 3.554591061691305*^9}, {
+   3.554591097965644*^9, 3.554591241120969*^9}, {3.554591282208784*^9, 
+   3.554591282504202*^9}, {3.554591604383213*^9, 3.554591604517315*^9}, {
+   3.554592261268055*^9, 3.554592261574194*^9}, {3.55459245636522*^9, 
+   3.5545924578226337`*^9}, 3.5545925550922327`*^9, {3.554592608193561*^9, 
+   3.5545926710588713`*^9}, {3.554593185480708*^9, 3.554593199347621*^9}, {
+   3.554593243592393*^9, 3.554593250419203*^9}, 3.554594039832315*^9, {
+   3.554594300407089*^9, 3.5545943082813387`*^9}, 3.554594346601742*^9, {
+   3.554594924797176*^9, 3.554594960906776*^9}, {3.554595034059244*^9, 
+   3.554595037357782*^9}, {3.554595311538703*^9, 3.5545953455734043`*^9}, {
+   3.5545954663841476`*^9, 3.5545954946939573`*^9}, {3.55459558158698*^9, 
+   3.55459560995612*^9}, {3.5545956691436977`*^9, 3.554595670617219*^9}, {
+   3.554596084373948*^9, 3.554596084764798*^9}, {3.554596149285955*^9, 
+   3.554596154886829*^9}, {3.5545965260766*^9, 3.5545965490687647`*^9}, {
+   3.554596604059929*^9, 3.554596631347139*^9}, {3.554596687001409*^9, 
+   3.5545967421105433`*^9}, {3.554596858213985*^9, 3.554596858521644*^9}, {
+   3.554596908950349*^9, 3.554596909031293*^9}, {3.554596946682003*^9, 
+   3.55459697652701*^9}, {3.554597096891066*^9, 3.5545970974048767`*^9}, {
+   3.554597133610593*^9, 3.554597134050297*^9}, {3.554597232837789*^9, 
+   3.554597233216578*^9}, {3.5546518919846487`*^9, 3.554652025809575*^9}, {
+   3.5546529554037*^9, 3.554652961426835*^9}, {3.5546533234547873`*^9, 
+   3.5546533364737797`*^9}, {3.554653545928278*^9, 3.554653550130291*^9}, 
+   3.554653584524184*^9, {3.554653629352428*^9, 3.5546536500437717`*^9}, {
+   3.5546543523987703`*^9, 3.554654365561116*^9}, {3.554654397238146*^9, 
+   3.554654399375935*^9}, {3.554654747806798*^9, 3.5546547545783453`*^9}, {
+   3.554655057485251*^9, 3.554655062861199*^9}, {3.5546580829005337`*^9, 
+   3.5546581053559837`*^9}, {3.554658163918314*^9, 3.5546581949002066`*^9}},
+ CellID->235391359],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`m$$ = 1., $CellContext`n$$ = 
+    20, $CellContext`seed$$ = 6210526, $CellContext`tf$$ = 
+    39., $CellContext`view$$ = "plot", $CellContext`\[Alpha]$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`view$$], "plot"}, {
+      "plot", "density plot", "contour plot", "3D plot"}}, {{
+       Hold[$CellContext`n$$], 20, 
+       Style["n", Italic]}, 2, 64, 1}, {{
+       Hold[$CellContext`tf$$], 39., 
+       Style["t", Italic]}, 0.1, 150}, {{
+       Hold[$CellContext`m$$], 1., 
+       Style["m", Italic]}, 0.1, 5}, {{
+       Hold[$CellContext`\[Alpha]$$], 1}, 0.1, 15}, {{
+       Hold[$CellContext`seed$$], 6210526}, 1000000, 10000000, 1}}, 
+    Typeset`size$$ = {450., {222., 228.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`view$309510$$ = 0, $CellContext`n$309511$$ = 
+    0, $CellContext`tf$309512$$ = 0, $CellContext`m$309513$$ = 
+    0, $CellContext`\[Alpha]$309514$$ = 0, $CellContext`seed$309515$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`m$$ = 1., $CellContext`n$$ = 
+        20, $CellContext`seed$$ = 6210526, $CellContext`tf$$ = 
+        39., $CellContext`view$$ = "plot", $CellContext`\[Alpha]$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`view$$, $CellContext`view$309510$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$309511$$, 0], 
+        Hold[$CellContext`tf$$, $CellContext`tf$309512$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$309513$$, 0], 
+        Hold[$CellContext`\[Alpha]$$, $CellContext`\[Alpha]$309514$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$309515$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (SeedRandom[$CellContext`seed$$]; 
+       Module[{$CellContext`nsol$ = NDSolve[
+            Evaluate[
+             Flatten[{
+               ReplaceAll[
+                Table[$CellContext`m$$ Derivative[2][
+                    $CellContext`x[$CellContext`i]][$CellContext`t] == \
+($CellContext`x[$CellContext`i + 1][$CellContext`t] - 
+                   2 $CellContext`x[$CellContext`i][$CellContext`t] + \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t]) + $CellContext`\[Alpha]$$ \
+(($CellContext`x[$CellContext`i + 
+                    1][$CellContext`t] - \
+$CellContext`x[$CellContext`i][$CellContext`t])^2 - \
+($CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t])^2), {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`x[
+                  0][$CellContext`t] :> $CellContext`x[1][$CellContext`t] - 
+                  1, $CellContext`x[$CellContext`n$$ + 
+                   1][$CellContext`t] :> \
+$CellContext`x[$CellContext`n$$][$CellContext`t] + 1}], 
+               
+               Table[{$CellContext`x[$CellContext`i][0] == $CellContext`i + 
+                  RandomReal[{-0.1, 0.1}]/2, Derivative[1][
+                   $CellContext`x[$CellContext`i]][0] == 
+                 RandomReal[{-1, 1}]}, {$CellContext`i, $CellContext`n$$}]}]], 
+            Table[
+             $CellContext`x[$CellContext`i], {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`t, 0, $CellContext`tf$$}, MaxSteps -> 
+            100000]}, 
+         Pane[
+          Which[$CellContext`view$$ == "plot", 
+           Plot[
+            Evaluate[
+             ReplaceAll[
+              Table[
+               $CellContext`x[$CellContext`i][$CellContext`t], \
+{$CellContext`i, $CellContext`n$$}], $CellContext`nsol$]], {$CellContext`t, 
+             0, $CellContext`tf$$}, PlotRange -> All, Frame -> True, Axes -> 
+            False, ImageSize -> 450, AspectRatio -> 1], $CellContext`view$$ == 
+           "density plot", 
+           ListDensityPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "contour plot", 
+           ListContourPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, Contours -> 8, ImageSize -> 450, ColorFunction -> 
+            "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "3D plot", 
+           ListPlot3D[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> True, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            SphericalRegion -> True, 
+            DataRange -> {{0, $CellContext`n$$}, {0, $CellContext`tf$$}}]], {
+          450, 450}]]), 
+      "Specifications" :> {{{$CellContext`view$$, "plot"}, {
+         "plot", "density plot", "contour plot", "3D plot"}, ControlPlacement -> 
+         Top}, {{$CellContext`n$$, 20, 
+          Style["n", Italic]}, 2, 64, 1, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`tf$$, 39., 
+          Style["t", Italic]}, 0.1, 150, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`m$$, 1., 
+          Style["m", Italic]}, 0.1, 5, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`\[Alpha]$$, 1}, 0.1, 15, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, {{$CellContext`seed$$, 6210526}, 
+         1000000, 10000000, 1, ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Left, SynchronousUpdating -> False, 
+        AutorunSequencing -> {2, 3}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{663., {267., 272.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.554736772089444*^9},
+ CellID->426922946]
+}, {2}]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell[TextData[{
+ "The Fermi\[Dash]Pasta\[Dash]Ulam problem is named after the pioneering \
+numerical experiments realized by Enrico Fermi, John Pasta, and Stanislaw \
+Ulam in 1955 using the Los Alamos MANIAC computer. Based on the Debye theory \
+of crystals, they considered a system of ",
+ Cell[BoxData[
+  FormBox["n", TraditionalForm]], "InlineMath"],
+ " particles of mass ",
+ Cell[BoxData[
+  FormBox["m", TraditionalForm]], "InlineMath"],
+ " connected by harmonic springs, but introduced a quadratic nonlinear term. \
+They expected ergodic behavior, but to their surprise, observed recurrent \
+behavior. The continuum limit of the model is the Korteweg\[Dash]de Vries \
+nonlinear partial differential equation."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.554594600904256*^9, {3.55463352628797*^9, 3.554633527628791*^9}, 
+   3.554644865123785*^9, {3.554644925917809*^9, 3.554644938645607*^9}, {
+   3.554650820843617*^9, 3.554650919681782*^9}, {3.554650952413109*^9, 
+   3.554651038402934*^9}, {3.554651101279785*^9, 3.554651117074197*^9}, {
+   3.554651176948195*^9, 3.5546511837080927`*^9}, 3.554651351829844*^9, {
+   3.554651452011722*^9, 3.554651558131339*^9}, {3.554652261141959*^9, 
+   3.5546522728332853`*^9}, {3.554652304434844*^9, 3.55465231256459*^9}, 
+   3.5546523583441277`*^9, {3.5546526687333183`*^9, 3.554652701873991*^9}, {
+   3.5546527830681334`*^9, 3.554652788971789*^9}, {3.554657860016768*^9, 
+   3.554657880468887*^9}, 3.5546580018719387`*^9, {3.554736760122839*^9, 
+   3.554736781539734*^9}, {3.554736815595409*^9, 3.554736873667233*^9}, {
+   3.554737586088419*^9, 3.554737590581007*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`m$$ = 1., $CellContext`n$$ = 
+    20, $CellContext`seed$$ = 6210526, $CellContext`tf$$ = 
+    39., $CellContext`view$$ = "plot", $CellContext`\[Alpha]$$ = 1, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`view$$], "plot"}, {
+      "plot", "density plot", "contour plot", "3D plot"}}, {{
+       Hold[$CellContext`n$$], 20, 
+       Style["n", Italic]}, 2, 64, 1}, {{
+       Hold[$CellContext`tf$$], 39., 
+       Style["t", Italic]}, 0.1, 150}, {{
+       Hold[$CellContext`m$$], 1., 
+       Style["m", Italic]}, 0.1, 5}, {{
+       Hold[$CellContext`\[Alpha]$$], 1}, 0.1, 15}, {{
+       Hold[$CellContext`seed$$], 6210526}, 1000000, 10000000, 1}}, 
+    Typeset`size$$ = {450., {222., 228.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`view$3692$$ = 0, $CellContext`n$3693$$ = 
+    0, $CellContext`tf$3694$$ = 0, $CellContext`m$3695$$ = 
+    0, $CellContext`\[Alpha]$3696$$ = 0, $CellContext`seed$3697$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`m$$ = 1., $CellContext`n$$ = 
+        20, $CellContext`seed$$ = 6210526, $CellContext`tf$$ = 
+        39., $CellContext`view$$ = "plot", $CellContext`\[Alpha]$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`view$$, $CellContext`view$3692$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$3693$$, 0], 
+        Hold[$CellContext`tf$$, $CellContext`tf$3694$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$3695$$, 0], 
+        Hold[$CellContext`\[Alpha]$$, $CellContext`\[Alpha]$3696$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$3697$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (SeedRandom[$CellContext`seed$$]; 
+       Module[{$CellContext`nsol$ = NDSolve[
+            Evaluate[
+             Flatten[{
+               ReplaceAll[
+                Table[$CellContext`m$$ Derivative[2][
+                    $CellContext`x[$CellContext`i]][$CellContext`t] == \
+($CellContext`x[$CellContext`i + 1][$CellContext`t] - 
+                   2 $CellContext`x[$CellContext`i][$CellContext`t] + \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t]) + $CellContext`\[Alpha]$$ \
+(($CellContext`x[$CellContext`i + 
+                    1][$CellContext`t] - \
+$CellContext`x[$CellContext`i][$CellContext`t])^2 - \
+($CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t])^2), {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`x[
+                  0][$CellContext`t] :> $CellContext`x[1][$CellContext`t] - 
+                  1, $CellContext`x[$CellContext`n$$ + 
+                   1][$CellContext`t] :> \
+$CellContext`x[$CellContext`n$$][$CellContext`t] + 1}], 
+               
+               Table[{$CellContext`x[$CellContext`i][0] == $CellContext`i + 
+                  RandomReal[{-0.1, 0.1}]/2, Derivative[1][
+                   $CellContext`x[$CellContext`i]][0] == 
+                 RandomReal[{-1, 1}]}, {$CellContext`i, $CellContext`n$$}]}]], 
+            Table[
+             $CellContext`x[$CellContext`i], {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`t, 0, $CellContext`tf$$}, MaxSteps -> 
+            100000]}, 
+         Pane[
+          Which[$CellContext`view$$ == "plot", 
+           Plot[
+            Evaluate[
+             ReplaceAll[
+              Table[
+               $CellContext`x[$CellContext`i][$CellContext`t], \
+{$CellContext`i, $CellContext`n$$}], $CellContext`nsol$]], {$CellContext`t, 
+             0, $CellContext`tf$$}, PlotRange -> All, Frame -> True, Axes -> 
+            False, ImageSize -> 450, AspectRatio -> 1], $CellContext`view$$ == 
+           "density plot", 
+           ListDensityPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "contour plot", 
+           ListContourPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, Contours -> 8, ImageSize -> 450, ColorFunction -> 
+            "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "3D plot", 
+           ListPlot3D[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> True, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            SphericalRegion -> True, 
+            DataRange -> {{0, $CellContext`n$$}, {0, $CellContext`tf$$}}]], {
+          450, 450}]]), 
+      "Specifications" :> {{{$CellContext`view$$, "plot"}, {
+         "plot", "density plot", "contour plot", "3D plot"}, ControlPlacement -> 
+         Top}, {{$CellContext`n$$, 20, 
+          Style["n", Italic]}, 2, 64, 1, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`tf$$, 39., 
+          Style["t", Italic]}, 0.1, 150, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`m$$, 1., 
+          Style["m", Italic]}, 0.1, 5, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`\[Alpha]$$, 1}, 0.1, 15, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, {{$CellContext`seed$$, 6210526}, 
+         1000000, 10000000, 1, ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Left, SynchronousUpdating -> False, 
+        AutorunSequencing -> {2, 3}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{663., {267., 272.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->556910755]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`m$$ = 1.56, $CellContext`n$$ = 
+    55, $CellContext`seed$$ = 5421053, $CellContext`tf$$ = 
+    36.800000000000004`, $CellContext`view$$ = 
+    "plot", $CellContext`\[Alpha]$$ = 2.2, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`view$$], "plot"}, {
+      "plot", "density plot", "contour plot", "3D plot"}}, {{
+       Hold[$CellContext`n$$], 55, 
+       Style["n", Italic]}, 2, 64, 1}, {{
+       Hold[$CellContext`tf$$], 36.800000000000004`, 
+       Style["t", Italic]}, 0.1, 150}, {{
+       Hold[$CellContext`m$$], 1.56, 
+       Style["m", Italic]}, 0.1, 5}, {{
+       Hold[$CellContext`\[Alpha]$$], 2.2}, 0.1, 15}, {{
+       Hold[$CellContext`seed$$], 5421053}, 1000000, 10000000, 1}}, 
+    Typeset`size$$ = {450., {222., 228.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`view$3775$$ = 0, $CellContext`n$3776$$ = 
+    0, $CellContext`tf$3777$$ = 0, $CellContext`m$3778$$ = 
+    0, $CellContext`\[Alpha]$3779$$ = 0, $CellContext`seed$3780$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`m$$ = 1.56, $CellContext`n$$ = 
+        55, $CellContext`seed$$ = 5421053, $CellContext`tf$$ = 
+        36.800000000000004`, $CellContext`view$$ = 
+        "plot", $CellContext`\[Alpha]$$ = 2.2}, "ControllerVariables" :> {
+        Hold[$CellContext`view$$, $CellContext`view$3775$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$3776$$, 0], 
+        Hold[$CellContext`tf$$, $CellContext`tf$3777$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$3778$$, 0], 
+        Hold[$CellContext`\[Alpha]$$, $CellContext`\[Alpha]$3779$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$3780$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (SeedRandom[$CellContext`seed$$]; 
+       Module[{$CellContext`nsol$ = NDSolve[
+            Evaluate[
+             Flatten[{
+               ReplaceAll[
+                Table[$CellContext`m$$ Derivative[2][
+                    $CellContext`x[$CellContext`i]][$CellContext`t] == \
+($CellContext`x[$CellContext`i + 1][$CellContext`t] - 
+                   2 $CellContext`x[$CellContext`i][$CellContext`t] + \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t]) + $CellContext`\[Alpha]$$ \
+(($CellContext`x[$CellContext`i + 
+                    1][$CellContext`t] - \
+$CellContext`x[$CellContext`i][$CellContext`t])^2 - \
+($CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t])^2), {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`x[
+                  0][$CellContext`t] :> $CellContext`x[1][$CellContext`t] - 
+                  1, $CellContext`x[$CellContext`n$$ + 
+                   1][$CellContext`t] :> \
+$CellContext`x[$CellContext`n$$][$CellContext`t] + 1}], 
+               
+               Table[{$CellContext`x[$CellContext`i][0] == $CellContext`i + 
+                  RandomReal[{-0.1, 0.1}]/2, Derivative[1][
+                   $CellContext`x[$CellContext`i]][0] == 
+                 RandomReal[{-1, 1}]}, {$CellContext`i, $CellContext`n$$}]}]], 
+            Table[
+             $CellContext`x[$CellContext`i], {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`t, 0, $CellContext`tf$$}, MaxSteps -> 
+            100000]}, 
+         Pane[
+          Which[$CellContext`view$$ == "plot", 
+           Plot[
+            Evaluate[
+             ReplaceAll[
+              Table[
+               $CellContext`x[$CellContext`i][$CellContext`t], \
+{$CellContext`i, $CellContext`n$$}], $CellContext`nsol$]], {$CellContext`t, 
+             0, $CellContext`tf$$}, PlotRange -> All, Frame -> True, Axes -> 
+            False, ImageSize -> 450, AspectRatio -> 1], $CellContext`view$$ == 
+           "density plot", 
+           ListDensityPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "contour plot", 
+           ListContourPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, Contours -> 8, ImageSize -> 450, ColorFunction -> 
+            "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "3D plot", 
+           ListPlot3D[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> True, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            SphericalRegion -> True, 
+            DataRange -> {{0, $CellContext`n$$}, {0, $CellContext`tf$$}}]], {
+          450, 450}]]), 
+      "Specifications" :> {{{$CellContext`view$$, "plot"}, {
+         "plot", "density plot", "contour plot", "3D plot"}, ControlPlacement -> 
+         Top}, {{$CellContext`n$$, 55, 
+          Style["n", Italic]}, 2, 64, 1, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`tf$$, 36.800000000000004`, 
+          Style["t", Italic]}, 0.1, 150, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`m$$, 1.56, 
+          Style["m", Italic]}, 0.1, 5, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`\[Alpha]$$, 2.2}, 0.1, 15, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, {{$CellContext`seed$$, 5421053}, 
+         1000000, 10000000, 1, ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Left, SynchronousUpdating -> False, 
+        AutorunSequencing -> {2, 3}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{663., {267., 272.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->449800734],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`m$$ = 2.42, $CellContext`n$$ = 
+    43, $CellContext`seed$$ = 7157895, $CellContext`tf$$ = 
+    65., $CellContext`view$$ = "contour plot", $CellContext`\[Alpha]$$ = 1.6, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`view$$], "contour plot"}, {
+      "plot", "density plot", "contour plot", "3D plot"}}, {{
+       Hold[$CellContext`n$$], 43, 
+       Style["n", Italic]}, 2, 64, 1}, {{
+       Hold[$CellContext`tf$$], 65., 
+       Style["t", Italic]}, 0.1, 150}, {{
+       Hold[$CellContext`m$$], 2.42, 
+       Style["m", Italic]}, 0.1, 5}, {{
+       Hold[$CellContext`\[Alpha]$$], 1.6}, 0.1, 15}, {{
+       Hold[$CellContext`seed$$], 7157895}, 1000000, 10000000, 1}}, 
+    Typeset`size$$ = {450., {222., 228.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`view$3858$$ = 0, $CellContext`n$3859$$ = 
+    0, $CellContext`tf$3860$$ = 0, $CellContext`m$3861$$ = 
+    0, $CellContext`\[Alpha]$3862$$ = 0, $CellContext`seed$3863$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`m$$ = 2.42, $CellContext`n$$ = 
+        43, $CellContext`seed$$ = 7157895, $CellContext`tf$$ = 
+        65., $CellContext`view$$ = "contour plot", $CellContext`\[Alpha]$$ = 
+        1.6}, "ControllerVariables" :> {
+        Hold[$CellContext`view$$, $CellContext`view$3858$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$3859$$, 0], 
+        Hold[$CellContext`tf$$, $CellContext`tf$3860$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$3861$$, 0], 
+        Hold[$CellContext`\[Alpha]$$, $CellContext`\[Alpha]$3862$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$3863$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (SeedRandom[$CellContext`seed$$]; 
+       Module[{$CellContext`nsol$ = NDSolve[
+            Evaluate[
+             Flatten[{
+               ReplaceAll[
+                Table[$CellContext`m$$ Derivative[2][
+                    $CellContext`x[$CellContext`i]][$CellContext`t] == \
+($CellContext`x[$CellContext`i + 1][$CellContext`t] - 
+                   2 $CellContext`x[$CellContext`i][$CellContext`t] + \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t]) + $CellContext`\[Alpha]$$ \
+(($CellContext`x[$CellContext`i + 
+                    1][$CellContext`t] - \
+$CellContext`x[$CellContext`i][$CellContext`t])^2 - \
+($CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t])^2), {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`x[
+                  0][$CellContext`t] :> $CellContext`x[1][$CellContext`t] - 
+                  1, $CellContext`x[$CellContext`n$$ + 
+                   1][$CellContext`t] :> \
+$CellContext`x[$CellContext`n$$][$CellContext`t] + 1}], 
+               
+               Table[{$CellContext`x[$CellContext`i][0] == $CellContext`i + 
+                  RandomReal[{-0.1, 0.1}]/2, Derivative[1][
+                   $CellContext`x[$CellContext`i]][0] == 
+                 RandomReal[{-1, 1}]}, {$CellContext`i, $CellContext`n$$}]}]], 
+            Table[
+             $CellContext`x[$CellContext`i], {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`t, 0, $CellContext`tf$$}, MaxSteps -> 
+            100000]}, 
+         Pane[
+          Which[$CellContext`view$$ == "plot", 
+           Plot[
+            Evaluate[
+             ReplaceAll[
+              Table[
+               $CellContext`x[$CellContext`i][$CellContext`t], \
+{$CellContext`i, $CellContext`n$$}], $CellContext`nsol$]], {$CellContext`t, 
+             0, $CellContext`tf$$}, PlotRange -> All, Frame -> True, Axes -> 
+            False, ImageSize -> 450, AspectRatio -> 1], $CellContext`view$$ == 
+           "density plot", 
+           ListDensityPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "contour plot", 
+           ListContourPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, Contours -> 8, ImageSize -> 450, ColorFunction -> 
+            "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "3D plot", 
+           ListPlot3D[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> True, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            SphericalRegion -> True, 
+            DataRange -> {{0, $CellContext`n$$}, {0, $CellContext`tf$$}}]], {
+          450, 450}]]), 
+      "Specifications" :> {{{$CellContext`view$$, "contour plot"}, {
+         "plot", "density plot", "contour plot", "3D plot"}, ControlPlacement -> 
+         Top}, {{$CellContext`n$$, 43, 
+          Style["n", Italic]}, 2, 64, 1, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`tf$$, 65., 
+          Style["t", Italic]}, 0.1, 150, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`m$$, 2.42, 
+          Style["m", Italic]}, 0.1, 5, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`\[Alpha]$$, 1.6}, 0.1, 15, ImageSize -> 
+         Tiny, Appearance -> "Labeled"}, {{$CellContext`seed$$, 7157895}, 
+         1000000, 10000000, 1, ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Left, SynchronousUpdating -> False, 
+        AutorunSequencing -> {2, 3}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{663., {267., 272.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->118782611],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`m$$ = 0.78, $CellContext`n$$ = 
+    46, $CellContext`seed$$ = 6210526, $CellContext`tf$$ = 
+    42., $CellContext`view$$ = "3D plot", $CellContext`\[Alpha]$$ = 
+    1.4000000000000001`, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`view$$], "3D plot"}, {
+      "plot", "density plot", "contour plot", "3D plot"}}, {{
+       Hold[$CellContext`n$$], 46, 
+       Style["n", Italic]}, 2, 64, 1}, {{
+       Hold[$CellContext`tf$$], 42., 
+       Style["t", Italic]}, 0.1, 150}, {{
+       Hold[$CellContext`m$$], 0.78, 
+       Style["m", Italic]}, 0.1, 5}, {{
+       Hold[$CellContext`\[Alpha]$$], 1.4000000000000001`}, 0.1, 15}, {{
+       Hold[$CellContext`seed$$], 6210526}, 1000000, 10000000, 1}}, 
+    Typeset`size$$ = {450., {222., 228.}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`view$3941$$ = 0, $CellContext`n$3942$$ = 
+    0, $CellContext`tf$3943$$ = 0, $CellContext`m$3944$$ = 
+    0, $CellContext`\[Alpha]$3945$$ = 0, $CellContext`seed$3946$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`m$$ = 0.78, $CellContext`n$$ = 
+        46, $CellContext`seed$$ = 6210526, $CellContext`tf$$ = 
+        42., $CellContext`view$$ = "3D plot", $CellContext`\[Alpha]$$ = 
+        1.4000000000000001`}, "ControllerVariables" :> {
+        Hold[$CellContext`view$$, $CellContext`view$3941$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$3942$$, 0], 
+        Hold[$CellContext`tf$$, $CellContext`tf$3943$$, 0], 
+        Hold[$CellContext`m$$, $CellContext`m$3944$$, 0], 
+        Hold[$CellContext`\[Alpha]$$, $CellContext`\[Alpha]$3945$$, 0], 
+        Hold[$CellContext`seed$$, $CellContext`seed$3946$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> (SeedRandom[$CellContext`seed$$]; 
+       Module[{$CellContext`nsol$ = NDSolve[
+            Evaluate[
+             Flatten[{
+               ReplaceAll[
+                Table[$CellContext`m$$ Derivative[2][
+                    $CellContext`x[$CellContext`i]][$CellContext`t] == \
+($CellContext`x[$CellContext`i + 1][$CellContext`t] - 
+                   2 $CellContext`x[$CellContext`i][$CellContext`t] + \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t]) + $CellContext`\[Alpha]$$ \
+(($CellContext`x[$CellContext`i + 
+                    1][$CellContext`t] - \
+$CellContext`x[$CellContext`i][$CellContext`t])^2 - \
+($CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`x[$CellContext`i - 
+                    1][$CellContext`t])^2), {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`x[
+                  0][$CellContext`t] :> $CellContext`x[1][$CellContext`t] - 
+                  1, $CellContext`x[$CellContext`n$$ + 
+                   1][$CellContext`t] :> \
+$CellContext`x[$CellContext`n$$][$CellContext`t] + 1}], 
+               
+               Table[{$CellContext`x[$CellContext`i][0] == $CellContext`i + 
+                  RandomReal[{-0.1, 0.1}]/2, Derivative[1][
+                   $CellContext`x[$CellContext`i]][0] == 
+                 RandomReal[{-1, 1}]}, {$CellContext`i, $CellContext`n$$}]}]], 
+            Table[
+             $CellContext`x[$CellContext`i], {$CellContext`i, \
+$CellContext`n$$}], {$CellContext`t, 0, $CellContext`tf$$}, MaxSteps -> 
+            100000]}, 
+         Pane[
+          Which[$CellContext`view$$ == "plot", 
+           Plot[
+            Evaluate[
+             ReplaceAll[
+              Table[
+               $CellContext`x[$CellContext`i][$CellContext`t], \
+{$CellContext`i, $CellContext`n$$}], $CellContext`nsol$]], {$CellContext`t, 
+             0, $CellContext`tf$$}, PlotRange -> All, Frame -> True, Axes -> 
+            False, ImageSize -> 450, AspectRatio -> 1], $CellContext`view$$ == 
+           "density plot", 
+           ListDensityPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "contour plot", 
+           ListContourPlot[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> False, Contours -> 8, ImageSize -> 450, ColorFunction -> 
+            "SunsetColors", 
+            DataRange -> {{0, $CellContext`n$$}, {
+              0, $CellContext`tf$$}}], $CellContext`view$$ == "3D plot", 
+           ListPlot3D[
+            Evaluate[
+             ReplaceAll[
+              
+              Table[$CellContext`x[$CellContext`i][$CellContext`t] - \
+$CellContext`i, {$CellContext`i, $CellContext`n$$}, {$CellContext`t, 
+                0, $CellContext`tf$$, 0.1}], 
+              Part[$CellContext`nsol$, 1]]], PlotRange -> All, Mesh -> False, 
+            Axes -> True, ImageSize -> 450, ColorFunction -> "SunsetColors", 
+            SphericalRegion -> True, 
+            DataRange -> {{0, $CellContext`n$$}, {0, $CellContext`tf$$}}]], {
+          450, 450}]]), 
+      "Specifications" :> {{{$CellContext`view$$, "3D plot"}, {
+         "plot", "density plot", "contour plot", "3D plot"}, ControlPlacement -> 
+         Top}, {{$CellContext`n$$, 46, 
+          Style["n", Italic]}, 2, 64, 1, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`tf$$, 42., 
+          Style["t", Italic]}, 0.1, 150, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`m$$, 0.78, 
+          Style["m", Italic]}, 0.1, 5, ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`\[Alpha]$$, 1.4000000000000001`}, 0.1, 15,
+          ImageSize -> Tiny, Appearance -> 
+         "Labeled"}, {{$CellContext`seed$$, 6210526}, 1000000, 10000000, 1, 
+         ImageSize -> Tiny}}, 
+      "Options" :> {
+       ControlPlacement -> Left, SynchronousUpdating -> False, 
+        AutorunSequencing -> {2, 3}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{663., {267., 272.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->48393979]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell["The equations of motion are", "DetailNotes",
+ CellChangeTimes->{{3.5546528162843637`*^9, 3.5546528212362633`*^9}},
+ CellID->2118252124],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"m", " ", 
+     RowBox[{
+      SuperscriptBox[
+       SubscriptBox["x", "i"], "\[Prime]\[Prime]",
+       MultilineFunction->None], "\[InvisibleApplication]", 
+      RowBox[{"(", "t", ")"}]}]}], "\[LongEqual]", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["x", 
+        RowBox[{"i", "-", "1"}]], "+", 
+       SubscriptBox["x", 
+        RowBox[{"i", "+", "1"}]], "-", 
+       RowBox[{"2", " ", 
+        SubscriptBox["x", "i"]}]}], ")"}], " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "+", 
+       RowBox[{"\[Alpha]", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["x", 
+           RowBox[{"i", "+", "1"}]], "-", 
+          SubscriptBox["x", 
+           RowBox[{"i", "-", "1"}]]}], ")"}]}]}], ")"}]}]}], 
+   TraditionalForm]], "InlineMath"],
+ ","
+}], "DetailNotes",
+ CellChangeTimes->{{3.55465123139575*^9, 3.554651242465955*^9}, {
+   3.554651276155665*^9, 3.554651339589052*^9}, {3.554652936749756*^9, 
+   3.55465293776509*^9}, 3.554736917418915*^9},
+ CellID->1710069626],
+
+Cell[TextData[{
+ "where ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["x", "i"], TraditionalForm]], "InlineMath"],
+ " is the displacement of particle ",
+ Cell[BoxData[
+  FormBox["i", TraditionalForm]], "InlineMath"],
+ " from its equilibrium position. The first factor represents Hooke's law, \
+and the term containing ",
+ Cell[BoxData[
+  FormBox["\[Alpha]", TraditionalForm]], "InlineMath"],
+ " represents the nonlinear force."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.554651358354868*^9, {3.554652832815524*^9, 3.554652915939713*^9}, {
+   3.5546561215313396`*^9, 3.554656164279324*^9}, {3.554736929871551*^9, 
+   3.554736930017433*^9}, {3.554737636476161*^9, 3.554737699224237*^9}, {
+   3.5548310172480803`*^9, 3.554831025758931*^9}},
+ CellID->1366556381],
+
+Cell["Reference", "DetailNotes",
+ CellChangeTimes->{{3.554652918833315*^9, 3.554652920146543*^9}},
+ CellID->479548102],
+
+Cell[TextData[{
+ "[1] T. Dauxois and S. Ruffo. \"Fermi\[Dash]Pasta\[Dash]Ulam Nonlinear \
+Lattice Oscillations.\" Scholarpedia, ",
+ StyleBox["3",
+  FontWeight->"Bold"],
+ "(8):5538. (Aug 24, 2012) ",
+ ButtonBox["www.scholarpedia.org/article/Fermi-Pasta-Ulam_nonlinear _lattice \
+_oscillations",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://www.scholarpedia.org/article/Fermi-Pasta-Ulam_nonlinear_\
+lattice_oscillations"], 
+    "http://www.scholarpedia.org/article/Fermi-Pasta-Ulam_nonlinear_lattice_\
+oscillations"},
+  ButtonNote->
+   "http://www.scholarpedia.org/article/Fermi-Pasta-Ulam_nonlinear_lattice_\
+oscillations"],
+ "."
+}], "DetailNotes",
+ CellChangeTimes->{{3.554591511274251*^9, 3.554591511294634*^9}, {
+   3.554736942415399*^9, 3.554736958277701*^9}, {3.554831096132968*^9, 
+   3.55483119536689*^9}, 3.5548312284962025`*^9, {3.554831269954348*^9, 
+   3.5548312770180545`*^9}, {3.554831438161167*^9, 3.5548314385372047`*^9}},
+ CellID->2140860149]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.55473697833267*^9},
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.5547369794802237`*^9},
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.554736984238936*^9},
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9, 
+  3.5547369855214567`*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.5545913686298532`*^9},
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection"],
+
+Cell["Hooke's law", "SearchTerms",
+ CellChangeTimes->{{3.554656713102337*^9, 3.554656713164908*^9}},
+ CellID->2020376205],
+
+Cell["Fermi-Pasta-Ulam experiment", "SearchTerms",
+ CellChangeTimes->{
+  3.5545919267435093`*^9, {3.554656717927579*^9, 3.554656719815975*^9}},
+ CellID->1499889868],
+
+Cell["Korteweg-de Vries equation", "SearchTerms",
+ CellChangeTimes->{{3.55465672342727*^9, 3.554656723517239*^9}},
+ CellID->1625108402]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection"],
+
+Cell[TextData[ButtonBox["Hooke's Law",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://scienceworld.wolfram.com/physics/HookesLaw.html"], None},
+ ButtonNote->
+  "http://scienceworld.wolfram.com/physics/HookesLaw.html"]], "RelatedLinks",
+ CellChangeTimes->{{3.554656705662636*^9, 3.55465670566324*^9}},
+ CellID->1711897352],
+
+Cell[TextData[ButtonBox["Fermi-Pasta-Ulam Experiment",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://scienceworld.wolfram.com/physics/Fermi-Pasta-UlamExperiment.\
+html"], None},
+ ButtonNote->
+  "http://scienceworld.wolfram.com/physics/Fermi-Pasta-UlamExperiment.html"]],\
+ "RelatedLinks",
+ CellChangeTimes->{{3.554591904979116*^9, 3.5545919049955263`*^9}, {
+  3.5548313580381556`*^9, 3.5548313648618383`*^9}},
+ CellID->1319701739],
+
+Cell[TextData[ButtonBox["Korteweg-de Vries Equation",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://scienceworld.wolfram.com/physics/Korteweg-deVriesEquation.\
+html"], None},
+ ButtonNote->
+  "http://scienceworld.wolfram.com/physics/Korteweg-deVriesEquation.html"]], \
+"RelatedLinks",
+ CellChangeTimes->{{3.5545919356004553`*^9, 3.55459193561436*^9}},
+ CellID->1016021157]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Enrique Zeleny",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Enrique+Zeleny"]\
+, None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Enrique+Zeleny"]
+}], "Author",
+ CellChangeTimes->{{3.554591362736349*^9, 3.554591365096024*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{828, 912},
+WindowMargins->{{275, Automatic}, {-3, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (October 6, 2011)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "WindowsANSI"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "AutomaticAnimation"->{
+  Cell[66942, 1435, 1507, 32, 22, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[68452, 1469, 908, 21, 22, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]},
+ "CreateAndDeleteLocators"->{
+  Cell[65016, 1382, 637, 15, 22, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "DragLocators"->{
+  Cell[64673, 1369, 340, 11, 22, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "GamepadControls"->{
+  Cell[66544, 1423, 395, 10, 22, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "ResizeImages"->{
+  Cell[63594, 1339, 352, 9, 22, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[63949, 1350, 721, 17, 22, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "SliderZoom"->{
+  Cell[65656, 1399, 885, 22, 22, "ControlSuggestions",
+   CellTags->"SliderZoom"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"AutomaticAnimation", 71920, 1577},
+ {"BookmarkAnimation", 72037, 1580},
+ {"CreateAndDeleteLocators", 72158, 1583},
+ {"DragLocators", 72274, 1586},
+ {"GamepadControls", 72382, 1589},
+ {"ResizeImages", 72490, 1592},
+ {"RotateAndZoomIn3D", 72599, 1595},
+ {"SliderZoom", 72707, 1598}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 145, 2, 74, "DemoTitle"],
+Cell[727, 26, 33, 0, 287, "InitializationSection"],
+Cell[CellGroupData[{
+Cell[785, 30, 29, 0, 194, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[839, 34, 21524, 430, 828, "Input",
+ CellID->235391359],
+Cell[22366, 466, 7238, 144, 551, "Output",
+ CellID->426922946]
+}, {2}]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29650, 616, 36, 0, 169, "ManipulateCaptionSection"],
+Cell[29689, 618, 1616, 27, 83, "ManipulateCaption"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31342, 650, 28, 0, 173, "ThumbnailSection"],
+Cell[31373, 652, 7172, 143, 551, "Output",
+ CellID->556910755]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38582, 800, 28, 0, 143, "SnapshotsSection"],
+Cell[38613, 802, 7259, 144, 551, "Output",
+ CellID->449800734],
+Cell[45875, 948, 7222, 143, 551, "Output",
+ CellID->118782611],
+Cell[53100, 1093, 7275, 144, 551, "Output",
+ CellID->48393979]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[60412, 1242, 26, 0, 336, "DetailsSection"],
+Cell[60441, 1244, 141, 2, 22, "DetailNotes",
+ CellID->2118252124],
+Cell[60585, 1248, 1078, 34, 23, "DetailNotes",
+ CellID->1710069626],
+Cell[61666, 1284, 757, 19, 39, "DetailNotes",
+ CellID->1366556381],
+Cell[62426, 1305, 118, 2, 22, "DetailNotes",
+ CellID->479548102],
+Cell[62547, 1309, 970, 23, 37, "DetailNotes",
+ CellID->2140860149]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63554, 1337, 37, 0, 126, "ControlSuggestionsSection"],
+Cell[63594, 1339, 352, 9, 22, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[63949, 1350, 721, 17, 22, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[64673, 1369, 340, 11, 22, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[65016, 1382, 637, 15, 22, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[65656, 1399, 885, 22, 22, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[66544, 1423, 395, 10, 22, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[66942, 1435, 1507, 32, 22, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[68452, 1469, 908, 21, 22, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69397, 1495, 30, 0, 155, "SearchTermsSection"],
+Cell[69430, 1497, 121, 2, 22, "SearchTerms",
+ CellID->2020376205],
+Cell[69554, 1501, 164, 3, 22, "SearchTerms",
+ CellID->1499889868],
+Cell[69721, 1506, 135, 2, 22, "SearchTerms",
+ CellID->1625108402]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69893, 1513, 31, 0, 141, "RelatedLinksSection"],
+Cell[69927, 1515, 329, 7, 22, "RelatedLinks",
+ CellID->1711897352],
+Cell[70259, 1524, 439, 10, 22, "RelatedLinks",
+ CellID->1319701739],
+Cell[70701, 1536, 380, 9, 22, "RelatedLinks",
+ CellID->1016021157]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[71118, 1550, 25, 0, 141, "AuthorSection"],
+Cell[71146, 1552, 365, 10, 22, "Author"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
