@@ -1,0 +1,18 @@
+%Demonstrates difference between linear and quadratic mesh
+close all;
+model = createpde;
+geometryFromEdges(model,@lshapeg);
+generateMesh(model, 'Hmax',3,'GeometricOrder', 'linear');
+
+subplot(2,2,1)
+pdemesh(model)
+subplot(2,2,2)
+pdemesh(model,'NodeLabels','on')
+[p,e,t] = meshToPet(model.Mesh);
+
+subplot(2,2,3)
+pdemesh(model)
+generateMesh(model, 'Hmax',3,'GeometricOrder', 'linear');
+
+
+
