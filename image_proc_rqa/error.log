@@ -1,0 +1,63 @@
+Please send us the following error report. Provide a brief
+description of what you were doing when this problem occurred.
+E-mail or FAX this information to us at:
+    E-mail:  marwan@pik-potsdam.de
+       Fax:  ++49 +331 288 2508
+Thank you for your assistance.
+
+
+--------------------------------------------------
+03-Mar-2018 08:20:34
+Matlab 9.1.0.441655 (R2016b) on GLNXA64
+Cross Recurrence Plot Toolbox 5.22 (02-Nov-2017)
+--------------------------------------------------
+Error using zeros
+Requested 1226340x1226340 (11205.0GB) array exceeds maximum array size preference. Creation of arrays greater than this limit may take a long time and cause MATLAB to become unresponsive. See array size limit or preference panel for more information.
+
+ during ==> crp:compute
+ method ==> 2
+ input ==> char	 (compute)
+ errorcode ==> 11.002
+ workspace dump ==>
+Name	Size	Bytes	Class
+NX	1  1	8	double
+NY	1  1	8	double
+Nx	1  1	8	double
+Ny	1  1	8	double
+action	1  7	14	char
+check_gui	1  3	354	cell
+check_meth	1  12	1392	cell
+check_norm	1  2	236	cell
+cm	19   1	112768	cell
+cm_old	256    3	6144	double
+ds	1  1	8	double
+e	1  1	8	double
+errcode	1  1	8	double
+flagClass	0  0	0	double
+h	1  1	8	matlab.ui.control.UIControl
+hCRP	1  1	8	matlab.ui.Figure
+hCtrl	1  1	8	matlab.ui.Figure
+i	1  1	8	double
+i_int	0  0	0	double
+intclasses	9  1	1106	cell
+j	1  1	8	double
+m	1  1	8	double
+mflag	1  1	8	double
+nogui	1  1	8	double
+nonorm	1  1	8	double
+obj	1  1	5352	struct
+plugin_exist	1  1	8	double
+plugin_name	0  0	0	char
+plugin_path	0  0	0	char
+props	1  1	36904	struct
+t	1  1	8	double
+txt_cross	0  0	0	char
+varargin	1  1	126	cell
+x	1226340        1	9810720	double
+x1	1226340        1	9810720	double
+x2	1226340        1	9810720	double
+xscale	1226340        1	9810720	double
+y	1226340        1	9810720	double
+y1	1226340        1	9810720	double
+y2	1226340        1	9810720	double
+yscale	1226340        1	9810720	double
