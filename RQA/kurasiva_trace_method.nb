@@ -1,0 +1,1153 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     66093,       1145]
+NotebookOptionsPosition[     65213,       1117]
+NotebookOutlinePosition[     65549,       1132]
+CellTagsIndexPosition[     65506,       1129]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Lambda]", "=", "3"}], ";", 
+   RowBox[{"a", "=", "1"}], ";", 
+   RowBox[{"x0", "=", "20."}], ";", 
+   RowBox[{"\[Nu]", "=", "1."}], ";", 
+   RowBox[{"tmax", "=", "1000."}], ";", 
+   RowBox[{"nxy", "=", "33"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"Reap", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"sol", "=", 
+      RowBox[{"NDSolveValue", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"D", "[", 
+             RowBox[{
+              RowBox[{"u", "[", 
+               RowBox[{"t", ",", "x"}], "]"}], ",", "t"}], "]"}], "+", 
+            RowBox[{"\[Lambda]", " ", 
+             RowBox[{"D", "[", 
+              RowBox[{
+               RowBox[{"u", "[", 
+                RowBox[{"t", ",", "x"}], "]"}], ",", "x", ",", "x", ",", "x", 
+               ",", "x"}], "]"}]}], "+", 
+            RowBox[{"\[Nu]", " ", 
+             RowBox[{"D", "[", 
+              RowBox[{
+               RowBox[{"u", "[", 
+                RowBox[{"t", ",", "x"}], "]"}], ",", "x", ",", "x"}], "]"}]}],
+             "+", 
+            RowBox[{
+             RowBox[{"u", "[", 
+              RowBox[{"t", ",", "x"}], "]"}], 
+             RowBox[{"D", "[", 
+              RowBox[{
+               RowBox[{"u", "[", 
+                RowBox[{"t", ",", "x"}], "]"}], ",", "x"}], "]"}]}]}], 
+           "\[Equal]", "0"}], ",", 
+          RowBox[{
+           RowBox[{"u", "[", 
+            RowBox[{"0", ",", "x"}], "]"}], "\[Equal]", 
+           RowBox[{
+            SuperscriptBox["\[ExponentialE]", 
+             RowBox[{"-", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{"x", "-", "a"}], ")"}], "2"]}]], "+", 
+            SuperscriptBox["\[ExponentialE]", 
+             RowBox[{"-", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{"x", "+", "a"}], ")"}], "2"]}]]}]}], " ", ",", 
+          RowBox[{
+           RowBox[{"u", "[", 
+            RowBox[{"t", ",", 
+             RowBox[{"-", "x0"}]}], "]"}], "\[Equal]", 
+           RowBox[{"u", "[", 
+            RowBox[{"t", ",", "x0"}], "]"}]}]}], "}"}], ",", "u", ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "tmax"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"x", ",", 
+          RowBox[{"-", "x0"}], ",", "x0"}], "}"}], ",", 
+        RowBox[{"Method", "\[Rule]", "\"\<StiffnessSwitching\>\""}], ",", 
+        RowBox[{"\"\<MethodMonitor\>\"", "\[RuleDelayed]", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"Sow", "[", 
+            RowBox[{"NDSolve`Self", "[", 
+             RowBox[{"[", "0", "]"}], "]"}], "]"}], ";"}], ")"}]}]}], "]"}]}],
+      ";"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.699527577588354*^9, 3.6995276425206537`*^9}, {
+   3.699527683984569*^9, 3.6995277380034*^9}, {3.708414237676856*^9, 
+   3.7084142385530863`*^9}, {3.708414637445705*^9, 3.708414637790161*^9}, {
+   3.708415042662575*^9, 3.708415076877923*^9}, 3.70841514149741*^9, {
+   3.727783031210135*^9, 3.727783031696683*^9}, {3.727783087081218*^9, 
+   3.727783143522736*^9}, {3.7277833079525223`*^9, 3.727783308613419*^9}, {
+   3.7277833729159117`*^9, 3.727783373317046*^9}, {3.727785312637107*^9, 
+   3.72778531740711*^9}, {3.727785368059051*^9, 3.727785370904971*^9}, {
+   3.727785462402986*^9, 3.727785466189705*^9}, {3.7277854991404037`*^9, 
+   3.7277854996349697`*^9}, {3.727789693244808*^9, 3.727789693334279*^9}, {
+   3.727790273767811*^9, 3.7277902958693438`*^9}, {3.7277908671934767`*^9, 
+   3.727790892882264*^9}, {3.727792266532028*^9, 3.7277922699577*^9}, {
+   3.729245788191162*^9, 3.7292458712804213`*^9}, 3.729245963513324*^9, {
+   3.7292464802100286`*^9, 3.729246534553289*^9}, {3.7292465802256393`*^9, 
+   3.729246594847797*^9}},ExpressionUUID->"50d512ed-7aa1-4ce7-b97d-\
+b5e1a043ed2e"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ndivs", "=", "100"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tval", "=", "tmax"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"err", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"D", "[", 
+        RowBox[{
+         RowBox[{"sol", "[", 
+          RowBox[{"tt", ",", " ", "xx"}], "]"}], ",", " ", 
+         RowBox[{"{", "tt", "}"}]}], "]"}], " ", "+", " ", 
+       RowBox[{
+        RowBox[{"sol", "[", 
+         RowBox[{"tt", ",", " ", "xx"}], "]"}], "*", 
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"sol", "[", 
+           RowBox[{"tt", ",", " ", "xx"}], "]"}], ",", " ", 
+          RowBox[{"{", "xx", "}"}]}], "]"}]}], " ", "+", 
+       RowBox[{"\[Nu]", " ", 
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"sol", "[", 
+           RowBox[{"tt", ",", " ", "xx"}], "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"xx", ",", " ", "2"}], "}"}]}], "]"}]}], " ", "+", " ", 
+       RowBox[{"\[Lambda]", " ", 
+        RowBox[{"D", "[", 
+         RowBox[{
+          RowBox[{"sol", "[", 
+           RowBox[{"tt", ",", " ", "xx"}], "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"xx", ",", " ", "4"}], "}"}]}], "]"}]}]}], "/.", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"xx", "\[Rule]", "0"}], ",", 
+        RowBox[{"tt", "\[Rule]", "\[Tau]"}]}], "}"}]}], " ", ",", 
+     RowBox[{"{", 
+      RowBox[{"\[Tau]", ",", "0", ",", "tval", ",", 
+       RowBox[{"tval", "/", "ndivs"}]}], "}"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.729246563832871*^9, 
+  3.729246584262597*^9}},ExpressionUUID->"df2f0903-8d89-435d-85d8-\
+d8c680288fff"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListLogPlot", "[", 
+  RowBox[{
+   RowBox[{"Abs", "[", "err", "]"}], ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]], "Input",ExpressionUUID->\
+"e1b68d96-09b2-4348-8cd2-be8eb3f04c51"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.009166666666666668], 
+     AbsoluteThickness[1.6], LineBox[CompressedData["
+1:eJw1lA1QkwUYxyfC+Az5kEAghkY4Agw05UvgD5MBG8LY2IYZYBCZQpJgIiDy
+1lVC1OGpXaAk2YkCHhLBgXklQ08IEPA8IwgxjA8JAgaFLAmo7n3e3e12v/3v
++fw/77sxOUOeqsfj8VL/+/7/y360wVkfpMmmPH009AfEoQ+++zzantgIxR1t
+F9/TW0tsgdLSb/vsRk2I12NcvrwsmrAitkN0SlHTg3ojYkd4n5+z8dRZEzvD
+dm6cH5m2FMzyJhx9Rb1hKMsYLLvg/cuBKoeSXtJdUR3Ff/zwjb9bWBZCtc7o
++7zaR8QvI9uQL7i9uYnYA515/GOB+wyp3hbET9e3NY2vUD4vTFU1HXQPMqF6
+3nB1fGhayTMl3opypRyazHnKtw2D6yWO0wou36sY0b2bO7Cf28d2HFYttJoY
+cLwD19pPFVp7GxP7oMo8MYK550DsC+fPvnQR8tcQ+2Hw4+rg2H5uH/7gi5Ib
+zOL0qJ8AxO2NuTzvuIZ4J9oXttUsH+T2HwiX8sWgmCQecRBkZXXG3feeUP/B
+eHrHvOqJeI4Y6Am4tF/p9hPLDNDfWimWh+hTfAiK7Yvnu5x1pIcg4YRwS37N
+U4oPhVGjgfBkBPnBhOKL4beyV4eekS5C1fysRLhukXQRLLUvLSXze0jfBb2B
+FoHtxJ+k78JK8d2uk7Ih0sNwY/TXTuUE7Z8Jg9t1t+SMGzyaXwz1QmnOm3cs
+WGbEWNrh1DudPkDx4ag/7VRR0cbFh6NPNbrars/5EwHxraOWQWHL7L6ZCNSm
+JFt+WM35HYkDZaXlV3N+o/hIyGoTLp2TrpAuAb+cV1LbzPUvQX2mWWNT2gj5
+J0XlEavU+yPkDyPF9a2J8GwypfpRmJq5qn1eO0P1o2Ddzrs7+FEX5d8NZ6/J
+H7sTaF5mN1wbU7zPp3P3Eg1tnrc0VEh+MdGQbB43NHKfpfoxCEtrHy3l0b0y
+MfCrzm64OLZK+WUYNvjac/y4lmXIoLVvcWvro/thZBBIQv44ldLI6hoZRJkC
+gUxrRPuPRcUJXeELvdQfYlHim6GrzVqgeWJxt2zfZM+tfyg+Fkx+xJHTdWbU
+vxxLh3Jfc1ALWIYc3cYXXrdymqF9ymFbfCGix9Gc1TVy2FsVRYbVWFC8AttH
+m29LYm0oXoGV/A3LiVLObwVizDtX/evoHjUKrA0Z8/0mifMvDopWj46N7zSy
+/SIOHTkJnyQ9G6L+4zAW+qlp7g/m7HyaOLTaZqaGX9Gn+ZUoGLVorsrj5lfi
+57DwgH53A/JLiaIOr4Id9+n+NUr4vWiaLR3nng8VEp2Ncyy5eaDC4IG/bIRZ
+9P5hVCi8OdZs8JjeTxoVzlqZKMKf4+5LDdXOjl/UBRPknxp7xSJpdS73vKpx
+7UyRf6p4E+1PDavHhzLPLE5RfDxqJu3TPXVamj8essRHX/1+jruXeHiYHx8W
+nSXWxCPX9+YToR3Nw9sDw4bZt3UM3Qv24HBQycyxKz6afwGBZeB1
+      
+      "]]}}, {}, {}, {{}, {}}, {{}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0., -25.67533899219481},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{
+     Charting`ScaledTicks[{Log, Exp}], 
+     Charting`ScaledFrameTicks[{Log, Exp}]}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Exp[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Exp[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0., 101.}, {-25.201242086062027`, 4.192766094170415}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->FrontEndValueCache[{Automatic, 
+     Charting`ScaledTicks[{Log, Exp}]}, {Automatic, {{-20.72326583694641, 
+       FormBox[
+        TemplateBox[{"10", 
+          RowBox[{"-", "9"}]}, "Superscript", SyntaxForm -> SuperscriptBox], 
+        TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {-13.815510557964274`, 
+       FormBox[
+        TemplateBox[{"10", 
+          RowBox[{"-", "6"}]}, "Superscript", SyntaxForm -> SuperscriptBox], 
+        TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {-6.907755278982137, 
+       FormBox["0.001`", TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {0., 
+       FormBox["1", TraditionalForm], {0.01, 0.}, {
+        AbsoluteThickness[0.1]}}, {-27.631021115928547`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {-25.328436022934504`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {-23.025850929940457`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {-18.420680743952367`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {-16.11809565095832, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {-11.512925464970229`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {-9.210340371976182, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {-4.605170185988091, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {-2.3025850929940455`, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {2.302585092994046, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {4.605170185988092, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {6.907755278982137, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {7.600902459542082, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}, {8.006367567650246, 
+       FormBox[
+        InterpretationBox[
+         StyleBox[
+          
+          GraphicsBox[{}, ImageSize -> {0., 0.}, BaselinePosition -> 
+           Baseline], "CacheGraphics" -> False], 
+         Spacer[{0., 0.}], Selectable -> False], TraditionalForm], {0.005, 
+       0.}, {
+        AbsoluteThickness[0.1]}}}}]]], "Output",
+ CellChangeTimes->{{3.7292465721835747`*^9, 
+  3.729246603902981*^9}},ExpressionUUID->"26013e38-8c1d-40f4-abdf-\
+8b858a476a83"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"data", "//", "Last"}]], "Input",
+ CellChangeTimes->{{3.729246536787078*^9, 
+  3.729246547013034*^9}},ExpressionUUID->"514c537b-2351-4887-9a51-\
+07a6039adfb9"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{
+   "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`ExplicitModifiedMidpoint", ",", 
+    "NDSolve`ExplicitModifiedMidpoint", ",", 
+    "NDSolve`ExplicitModifiedMidpoint", ",", 
+    "NDSolve`ExplicitModifiedMidpoint", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`ExplicitModifiedMidpoint", 
+    ",", "NDSolve`ExplicitModifiedMidpoint", ",", 
+    "NDSolve`ExplicitModifiedMidpoint", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`ExplicitModifiedMidpoint", 
+    ",", "NDSolve`ExplicitModifiedMidpoint", ",", 
+    "NDSolve`ExplicitModifiedMidpoint", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`StiffnessSwitching", ",", "NDSolve`Extrapolation", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", 
+    ",", "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`StiffnessSwitching", ",", 
+    "NDSolve`Extrapolation", ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler", ",", "NDSolve`LinearlyImplicitEuler", 
+    ",", "NDSolve`LinearlyImplicitEuler", ",", 
+    "NDSolve`LinearlyImplicitEuler"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{{3.729246537645993*^9, 3.729246547443098*^9}, 
+   3.729246608472372*^9},ExpressionUUID->"e8d6d11e-6627-4e1d-b7ef-\
+7a50b16e9c2f"]
+}, Open  ]]
+},
+WindowSize->{958, 1003},
+WindowMargins->{{153, Automatic}, {1, Automatic}},
+FrontEndVersion->"11.1 for Linux x86 (64-bit) (April 18, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 3933, 93, 333, "Input", "ExpressionUUID" -> \
+"767eced4-7e1a-4182-b750-e3c641fdf718"],
+Cell[4494, 115, 1705, 47, 182, "Input", "ExpressionUUID" -> \
+"6ce17b32-b1d8-45ff-b093-0e055bffc220"],
+Cell[CellGroupData[{
+Cell[6224, 166, 215, 5, 41, "Input", "ExpressionUUID" -> \
+"933620fe-003f-42f8-98b9-d8e959b6128d"],
+Cell[6442, 173, 8356, 205, 295, "Output", "ExpressionUUID" -> \
+"2653ad48-0b23-4edd-8cda-11136e793d2c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14835, 383, 182, 4, 41, "Input", "ExpressionUUID" -> \
+"3d491b3c-e641-4913-95db-109b7587a6e6"],
+Cell[15020, 389, 50177, 725, 17710, "Output", "ExpressionUUID" -> \
+"67fe37cb-a802-4782-9d62-f8d4f0b79384"]
+}, Open  ]]
+}
+]
+*)
+
