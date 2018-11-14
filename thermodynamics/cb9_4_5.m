@@ -21,10 +21,12 @@ clear all;
 
 %Given info:
 %-----------
-m_water = 25e-3; %kg
+m_water = 0.025; %kg
 P = 300/100; %bar (300 kPa = 3bar)
 i = 0.2; %Ampere
 V_p = 120; %voltage
+dt = 300; %seconds
+Q_out = 3700; %Joule of heat lost 
 
 %To find:
 %--------
@@ -36,13 +38,23 @@ V_p = 120; %voltage
 % it is the ISOLATED system that does not have these interactions, with
 % it's surroundings.
 %
-% E_in - E_out = W_electric,in - Q_out - W_boundary = DeltaU (internal
-% energy change)
+% LHS => E_in - E_out =  W_electric,in - Q_out - W_boundary 
+% RHS => DeltaU (internal energy change)
+% The reason the W_boundary term is being subtracted is because, as heat is
+% lost, to maintain a constant pressure, the fluid will be compressed.
+% Loss of heat roughly translates to "less agitated" fluid. 
 %
 % W_electric,in - Q_out = DeltaU + W_boundary
-% W_electric,in - Q_out = DeltaH
-% For a constant pressure situation, the fluid must expand
-
+% W_electric,in - Q_out = DeltaH, where DeltaH = m*(h_2 - h_1)
+% Once we solve for h_2, knowing the pressure, we can find the temperature
+% via interpolation from tables
+% 
+W_electric_in = V_p * i * dt %Joule
 fprintf('\nThis problem is incomplete\n****************************\n');
+h_1 = xsteam('hV_p',P)
+%DeltaH = m*(h_2 - h_1);
 
+h_2 = h_1 + (W_electric_in - Q_out)/m_water ;
+
+T = xsteam('T_ph',P, h_2)
 %eof
